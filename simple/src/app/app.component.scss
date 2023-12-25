@@ -1,0 +1,17 @@
+div {
+    color: red;
+
+    // &>h2 {
+    //     color: blue;
+    // }
+
+    h2 {
+        color: blue;
+    }
+}
+
+div.test {
+    div.s {
+        color: purple;
+    }
+}

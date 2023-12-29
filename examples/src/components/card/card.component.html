@@ -1,0 +1,24 @@
+<div class="table-responsive">
+    <table class="table table-primary">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">User ID</th>
+                <th scope="col">Number</th>
+                <th scope="col">Type</th>
+                <th scope="col">Detail</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let card of cards">
+                <td>{{card.id}}</td>
+                <td>{{card.userId}}</td>
+                <td>{{card.number}}</td>
+                <td>{{card.type}}</td>
+                <td><button class="btn btn-primary">Detail</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

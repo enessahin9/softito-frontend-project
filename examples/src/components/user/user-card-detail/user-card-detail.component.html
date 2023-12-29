@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="credit-card-box" *ngIf="userWithCardDto">
+        <div class="credit-card-group">
+            <div class="credit-card" *ngFor="let card of userWithCardDto.cards">
+                <img src="/src/assets/istockphoto-1151397537-612x612-removebg-preview.png" alt="" class="chip">
+                <div class="card-number"></div>
+                <div class="card-user-name">{{userWithCardDto}} </div> 
+                <!-- burda kalmaca -->
+            </div>
+        </div>
+    </div>
+</div>
+

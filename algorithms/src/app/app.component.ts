@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { DoorComponent } from "./door/door.component";
+import { DoorComponent } from "./components/door/door.component";
 
 @Component({
     selector: 'app-root',

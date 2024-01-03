@@ -20,7 +20,7 @@ import "./extensions/strings"
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'products';
+  title = 'Products';
   searchText: string = ""
 
   categories: Category[] = [

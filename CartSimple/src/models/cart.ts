@@ -1,4 +1,4 @@
 export interface Cart {
-    productId:number;
-    count:number;
+    productId: number;
+    count: number;
 }

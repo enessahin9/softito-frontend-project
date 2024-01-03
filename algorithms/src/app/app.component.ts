@@ -11,5 +11,5 @@ import { DoorComponent } from "./components/door/door.component";
     imports: [CommonModule, RouterOutlet, DoorComponent]
 })
 export class AppComponent {
-  title = 'algorithms';
+  title = 'Algorithms';
 }

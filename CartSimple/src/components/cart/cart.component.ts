@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Cart } from '../../models/cart';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-cart',
@@ -9,13 +10,11 @@ import { CommonModule } from '@angular/common';
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
-
 export class CartComponent {
-  @Input()
-  @Output() addCartItem: EventEmitter<number> = new EventEmitter
-  @Output() minusCartItem: EventEmitter<number> = new EventEmitter
-  carts: Cart[] = []
-
+  @Input() carts: Cart[] = [];
+  @Output() addCartItem: EventEmitter<number> = new EventEmitter();
+  @Output() minusCartItem: EventEmitter<number> = new EventEmitter();
+  constructor(private httpClient: HttpClient) { }
   getTotal(): number {
     let total = 0;
     this.carts.map(cart => cart.count).forEach(count => {

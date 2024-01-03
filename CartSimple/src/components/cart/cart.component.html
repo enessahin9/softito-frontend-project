@@ -1,14 +1,11 @@
-<div>{{carts | json}}</div>
-<div>{{getTotal()}}</div>
-
 <div class="cart">
     <div *ngFor="let cart of carts">
-        <h5>{{cart.count}}</h5>
+        <h5>{{cart.productId}}</h5>
         <div>
             <button class="btn btn-sm btn-primary" (click)="minusCartItem.emit(cart.productId)">-</button>
-            <span></span>
+            <span>{{cart.count}}</span>
             <button class="btn btn-sm btn-primary" (click)="addCartItem.emit(cart.productId)">+</button>
-            <button class="btn btn-sm btn-danger">Sil</button>
+            <button class="btn btn-sm btn-danger">Remove</button>
         </div>
     </div>
 </div>

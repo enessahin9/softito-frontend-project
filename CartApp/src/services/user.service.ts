@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Category } from "../models/category";
+import { User } from "../models/user";
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 
@@ -7,10 +7,9 @@ import { Injectable } from "@angular/core";
     providedIn: 'root'
 })
 
-export class CategoryService {
+export class UserService {
     constructor(private httpClient: HttpClient) { }
-
-    getAll(): Observable<Category[]> {
-        return this.httpClient.get<Category[]>("/assets/categoryList.json")
+    getAll(): Observable<User[]> {
+        return this.httpClient.get<User[]>("/assets/userList.json")
     }
 }

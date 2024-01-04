@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Product } from "../models/product";
+import { Injectable } from "@angular/core";
 
 @Injectable({
     providedIn: 'root'
@@ -14,5 +14,5 @@ export class ProductService {
         return this.httpClient.get<Product[]>("/assets/productList.json")
     }
 
-    
+
 }

@@ -1,5 +1,4 @@
-export interface User {
-    id: number;
-    name: string;
-    cartId: number;
+export interface User{
+    id:number;
+    fullName:string;
 }

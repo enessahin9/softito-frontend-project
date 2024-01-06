@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
-import { Cart } from '../models/cart';
+import { Cart, CartItem } from '../models/cart';
 import { Product } from '../models/product';
 import Swal from 'sweetalert2'
 
@@ -11,12 +11,18 @@ import Swal from 'sweetalert2'
 export class CartService {
     private selectedUser!: User
     private cartList: Cart[] = []
+
     constructor() {
+    }
+
+    getCartList(): Cart[] {
+        return this.cartList;
     }
 
     getSelectedUser(): User | undefined {
         return this.selectedUser;
     }
+
     setSelectedUser(user: User) {
         this.selectedUser = user;
         if (this.getUserCart() == undefined) {
@@ -31,9 +37,11 @@ export class CartService {
             timer: 1500
         })
     }
+
     getUserCart(): Cart | undefined {
         return this.cartList.find(cart => cart.userId == this.selectedUser.id)
     }
+
     addProductInCart(product: Product) {
         let cart = this.getUserCart();
         if (cart == undefined) {
@@ -52,7 +60,9 @@ export class CartService {
             cartItem = {
                 cartId: cart.id,
                 productId: product.id,
-                count: 0
+                count: 0,
+                productName: product.name,
+                productPrice: product.price
             };
             cart.items.push(cartItem)
         }
@@ -66,6 +76,36 @@ export class CartService {
         })
         // this.notifierService.notify('Added product',product.name+' added in cart');
     }
+
+    calculateTotalItems(): number {
+        let total = 0;
+
+        if (this.selectedUser) {
+            const userCart = this.cartList.find(cart => cart.userId === this.selectedUser.id);
+
+            if (userCart) {
+                for (const cartItem of userCart.items) {
+                    total += cartItem.count * cartItem.productPrice;
+                }
+            }
+        }
+
+        return total;
+    }
+
+    removeProductFromCart(cartItem: CartItem): void {
+        const userCart = this.cartList.find(cart => cart.userId === this.selectedUser.id);
+
+        if (userCart) {
+            const itemIndex = userCart.items.findIndex(item => item.productId === cartItem.productId);
+
+            if (itemIndex !== -1) {
+                userCart.items.splice(itemIndex, 1);
+            }
+        }
+    }
+
+
 
 
 }

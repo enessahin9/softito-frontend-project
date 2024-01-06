@@ -1,0 +1,51 @@
+<div *ngIf="cartService.getCartList().length > 0 && (cartService.getUserCart()?.items !== undefined)">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th class="text-center">Price</th>
+                <th class="text-center">Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cartItem of cartService.getUserCart()?.items">
+                <td>
+                    <div class="product-info">
+                        <h4><a href="#">{{ cartItem.productName }}</a></h4>
+                        <span class="status">Status: <strong>In Stock</strong></span>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <input type="number" min="1" class="form-control" [(ngModel)]="cartItem.count">
+                </td>
+                <td class="text-center">
+                    <strong>{{ cartItem.productPrice | currency }}</strong>
+                </td>
+                <td class="text-center">
+                    <strong>{{ calculateItemTotal(cartItem) | currency }}</strong>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" (click)="cartService.removeProductFromCart(cartItem)">
+                        <span class="fa fa-remove"></span> Remove
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="3">
+                    <h5>Cart Total</h5>
+                </td>
+                <td class="text-center">
+                    <h5><strong>{{ cartService.calculateTotalItems() | currency }}</strong></h5>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-success">
+                        Buy now <span class="fa fa-play"></span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

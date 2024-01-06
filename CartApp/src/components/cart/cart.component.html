@@ -1,1 +1,18 @@
 <p>{{cartService.getUserCart()|json}}</p>
+
+
+<div class="card" ngIf="cartService.getSelectedUser()">
+    <div class="card-body">
+        <h4 class="card-title">Kullanıcı Adı: {{ cartService.getSelectedUser()?.fullName }}</h4>
+        <p class="card-text">Ürünler</p>
+        <div *ngFor="let item of cartService.getUserCart()?.items" class="row">
+            <div class="col-6">
+                <p>Ürün: {{ item.productName }}</p>
+                <p>Ürün: {{ item.productPrice }}</p>
+            </div>
+            <div class="col-6">
+                <input type="number" min="1" value="1" class="form-control" />
+            </div>
+        </div>
+    </div>
+</div>
